@@ -23,6 +23,7 @@ public class Slot : MonoBehaviour
         if (isFull)
         {
             BlackBoard.allgameItems.InstansiateItem(itemID);
+            BlackBoard.playerInventory.itemsId[itemID]--;
             itemID = 0;
             isFull = false;
             m_Image.sprite = null;
