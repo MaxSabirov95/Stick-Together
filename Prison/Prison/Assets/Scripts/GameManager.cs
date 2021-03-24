@@ -24,5 +24,10 @@ public class GameManager : MonoBehaviour
         {
             lights.GetComponent<Light2D>().intensity = 0.5f;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            BlackBoard.inGameUI.PauseMenu();
+        }
     }
 }
