@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Weapon : ItemProperty
 {
-
     public GameObject[] weaponSlots;
     bool isPlayerOn;
+    public int weaponHP;
 
     void Start()
     {
@@ -24,6 +24,11 @@ public class Weapon : ItemProperty
                     weaponSlot.GetComponent<Slot>().isFull = true;
                     weaponSlot.GetComponent<Slot>().itemID = ID;
                     weaponSlot.GetComponent<Slot>().m_Image.sprite = spriteR;
+                    if (weaponHP > 1)
+                    {
+                        weaponSlot.GetComponent<Slot>().hpText.text = weaponHP.ToString();
+                        weaponSlot.GetComponent<Slot>().hpText.gameObject.SetActive(true);
+                    }
                     Destroy(gameObject);
                     break;
                 }

@@ -44,6 +44,8 @@ public class WeaponCraft : ItemProperty
                                     weaponSlot.GetComponent<Slot>().isFull = true;
                                     weaponSlot.GetComponent<Slot>().itemID = ID;
                                     weaponSlot.GetComponent<Slot>().m_Image.sprite = spriteR;
+                                    weaponSlot.GetComponent<Slot>().hpText.gameObject.SetActive(true);
+                                    weaponSlot.GetComponent<Slot>().hpText.text = 100.ToString();
                                     break;
                                 }
                             }
