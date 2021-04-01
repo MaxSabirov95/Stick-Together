@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        //Alon
+        PointAndClick();
+
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -52,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
         {
             flashLight.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+    }
+
+    void PointAndClick()
+    {
+
     }
 
     void FixedUpdate()

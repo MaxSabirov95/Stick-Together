@@ -18,9 +18,16 @@ public class AllGameItems : MonoBehaviour
         Instantiate(items[num], new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z), Quaternion.identity);
     }
 
+    //is this just for traps? if so, the added logic here is fine
     public void InstansiateWeapon(int num, int hp)
     {
         Weapon weapon = Instantiate(weapons[num], new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z), Quaternion.identity);
         weapon.GetComponent<Weapon>().weaponHP = hp;
+
+        //Alon: Here I add a Trap component to the weapon.
+        // the Trap component comes with a RequiredComponent(typeof(Collider)) - so it will add a collider, 
+        //if there isn't one already
+        Trap trap = weapon.gameObject.AddComponent<Trap>();
+        trap.trapDuration = 5; // this should be decided by the quality of the trap
     }
 }
