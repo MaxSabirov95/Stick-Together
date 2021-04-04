@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomsTransition : MonoBehaviour
 {
+    public enum KindOfDoor { InRoom, InLobby}
+    public KindOfDoor kindOfDoor;
+    public Text doorUI;
+
     public GameObject enterRoom;
     bool isPlayerIn;
 
@@ -24,6 +29,16 @@ public class RoomsTransition : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             isPlayerIn = true;
+            switch (kindOfDoor)
+            {
+                case KindOfDoor.InRoom:
+                    doorUI.text = "Press 'E' To Exit";
+                    break;
+                case KindOfDoor.InLobby:
+                    doorUI.text = "Press 'E' To Enter";
+                    break;
+            }
+            doorUI.gameObject.SetActive(true);
         }
     }
 
@@ -32,6 +47,7 @@ public class RoomsTransition : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             isPlayerIn = false;
+            doorUI.gameObject.SetActive(false);
         }
     }
 }

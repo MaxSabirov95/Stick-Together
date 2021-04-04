@@ -4,34 +4,54 @@ using UnityEngine;
 
 public class Weapon : ItemProperty
 {
-    public GameObject[] weaponSlots;
+    public enum KinfOfProtection { Weapon,Trap}
+    public KinfOfProtection kinfOfProtection;
+
+    public GameObject[] trapSlots;
+    public GameObject weaponSlot;
+
     bool isPlayerOn;
     public int weaponHP;
 
     void Start()
     {
-        weaponSlots = GameObject.FindGameObjectsWithTag("Weapon Slot");
+        trapSlots = GameObject.FindGameObjectsWithTag("Trap Slot");
+        weaponSlot = GameObject.FindGameObjectWithTag("Weapon Slot");
     }
 
     void Update()
     {
         if (isPlayerOn && Input.GetKeyDown(KeyCode.E))
         {
-            foreach (GameObject weaponSlot in weaponSlots)
+            switch (kinfOfProtection)
             {
-                if (!weaponSlot.GetComponent<Slot>().isFull)
-                {
-                    weaponSlot.GetComponent<Slot>().isFull = true;
-                    weaponSlot.GetComponent<Slot>().itemID = ID;
-                    weaponSlot.GetComponent<Slot>().m_Image.sprite = spriteR;
-                    if (weaponHP > 1)
+                case KinfOfProtection.Weapon:
+                    if (!weaponSlot.GetComponent<Slot>().isFull)
                     {
-                        weaponSlot.GetComponent<Slot>().hpText.text = weaponHP.ToString();
-                        weaponSlot.GetComponent<Slot>().hpText.gameObject.SetActive(true);
+                        weaponSlot.GetComponent<Slot>().isFull = true;
+                        weaponSlot.GetComponent<Slot>().itemID = ID;
+                        weaponSlot.GetComponent<Slot>().m_Image.sprite = spriteR;
+                        if (weaponHP > 1)
+                        {
+                            weaponSlot.GetComponent<Slot>().hpText.text = weaponHP.ToString();
+                            weaponSlot.GetComponent<Slot>().hpText.gameObject.SetActive(true);
+                        }
+                        Destroy(gameObject);
                     }
-                    Destroy(gameObject);
                     break;
-                }
+                case KinfOfProtection.Trap:
+                    foreach (GameObject trapSlot in trapSlots)
+                    {
+                        if (!trapSlot.GetComponent<Slot>().isFull)
+                        {
+                            trapSlot.GetComponent<Slot>().isFull = true;
+                            trapSlot.GetComponent<Slot>().itemID = ID;
+                            trapSlot.GetComponent<Slot>().m_Image.sprite = spriteR;
+                            Destroy(gameObject);
+                            break;
+                        }
+                    }
+                    break;
             }
         }
     }

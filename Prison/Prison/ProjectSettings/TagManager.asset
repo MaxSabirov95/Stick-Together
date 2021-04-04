@@ -8,6 +8,7 @@ TagManager:
   - Weapon Slot
   - Trap
   - Enemy
+  - Trap Slot
   layers:
   - Default
   - TransparentFX

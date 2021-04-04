@@ -97,7 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteR: {fileID: 21300000, guid: feee3d44d984442459c8d32c4aa5db27, type: 3}
   ID: 1
-  weaponSlots: []
+  kinfOfProtection: 1
+  trapSlots: []
+  weaponSlot: {fileID: 0}
   weaponHP: 79
 --- !u!61 &-7609648484917002768
 BoxCollider2D:
