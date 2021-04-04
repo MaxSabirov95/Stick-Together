@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponCraft : ItemProperty
+public class WeaponCraft : MonoBehaviour
 {
     public enum weapon { baseball, trap, flashbang }
     public weapon _weapon;
-    public GameObject[] slots;
-    public GameObject[] trapSlots;
-    public GameObject weaponSlot;
-
+    private GameObject[] slots;
+    private GameObject[] trapSlots;
+    private WeaponSlot weaponSlot;
     void Start()
     {
-        trapSlots = GameObject.FindGameObjectsWithTag("Trap Slot");
-        weaponSlot = GameObject.FindGameObjectWithTag("Weapon Slot");
-        slots = GameObject.FindGameObjectsWithTag("Slot");
+        trapSlots = SlotsRef.instance.traps;
+        weaponSlot = SlotsRef.instance.weapon.GetComponent<WeaponSlot>();
+        slots = SlotsRef.instance.regular;
     }
 
     public void Craft()
@@ -29,11 +28,9 @@ public class WeaponCraft : ItemProperty
                         MergeItems(4,4);
                         BlackBoard.playerInventory.itemsId[4] -= 2;
                         BlackBoard.playerInventory.itemsId[5]++;
-                        weaponSlot.GetComponent<Slot>().isFull = true;
-                        weaponSlot.GetComponent<Slot>().itemID = ID;
-                        weaponSlot.GetComponent<Slot>().m_Image.sprite = spriteR;
-                        weaponSlot.GetComponent<Slot>().hpText.gameObject.SetActive(true);
-                        weaponSlot.GetComponent<Slot>().hpText.text = 100.ToString();
+                        weaponSlot.FillSlot(ID, sprite);
+                        weaponSlot.hpText.gameObject.SetActive(true);
+                        weaponSlot.hpText.text = 100.ToString();
                         break;
                     }
                 }
@@ -56,9 +53,7 @@ public class WeaponCraft : ItemProperty
                                     BlackBoard.playerInventory.itemsId[1]--;
                                     BlackBoard.playerInventory.itemsId[3]--;
                                     BlackBoard.playerInventory.itemsId[6]++;
-                                    trapSlot.GetComponent<Slot>().isFull = true;
-                                    trapSlot.GetComponent<Slot>().itemID = ID;
-                                    trapSlot.GetComponent<Slot>().m_Image.sprite = spriteR;
+                                    trapSlot.GetComponent<Slot>().FillSlot(ID, sprite);
                                     break;
                                 }
                             }
@@ -75,9 +70,7 @@ public class WeaponCraft : ItemProperty
                                     BlackBoard.playerInventory.itemsId[0]--;
                                     BlackBoard.playerInventory.itemsId[2]--;
                                     BlackBoard.playerInventory.itemsId[7]++;
-                                    trapSlot.GetComponent<Slot>().isFull = true;
-                                    trapSlot.GetComponent<Slot>().itemID = ID;
-                                    trapSlot.GetComponent<Slot>().m_Image.sprite = spriteR;
+                                    trapSlot.GetComponent<Slot>().FillSlot(ID, sprite);
                                     break;
                                 }
                             }
@@ -100,12 +93,8 @@ public class WeaponCraft : ItemProperty
                     {
                         if (slot1.GetComponent<Slot>().itemID == item2)
                         {
-                            slot.GetComponent<Slot>().itemID = 0;
-                            slot.GetComponent<Slot>().isFull = false;
-                            slot.GetComponent<Slot>().m_Image.sprite = null;
-                            slot1.GetComponent<Slot>().itemID = 0;
-                            slot1.GetComponent<Slot>().isFull = false;
-                            slot1.GetComponent<Slot>().m_Image.sprite = null;
+                            slot.GetComponent<Slot>().EmptySlot();
+                            slot1.GetComponent<Slot>().EmptySlot();
                             break;
                         }
                     }

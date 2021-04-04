@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemProperty : MonoBehaviour
+public class ItemProperty
 {
-    public Sprite spriteR;
+    public Sprite sprite;
     public int ID;
 }

@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : ItemProperty
+public class Weapon : MonoBehaviour
 {
     public enum KinfOfProtection { Weapon,Trap}
     public KinfOfProtection kinfOfProtection;
 
-    public GameObject[] trapSlots;
-    public GameObject weaponSlot;
-
-    bool isPlayerOn;
+    public ItemProperty property;
     public int weaponHP;
+
+    private bool isPlayerOn;
+    private GameObject[] trapSlots;
+    private GameObject weaponSlot;
 
     void Start()
     {
-        trapSlots = GameObject.FindGameObjectsWithTag("Trap Slot");
-        weaponSlot = GameObject.FindGameObjectWithTag("Weapon Slot");
+        trapSlots = SlotsRef.instance.traps;
+        weaponSlot = SlotsRef.instance.weapon;
     }
 
     void Update()
@@ -26,15 +27,16 @@ public class Weapon : ItemProperty
             switch (kinfOfProtection)
             {
                 case KinfOfProtection.Weapon:
-                    if (!weaponSlot.GetComponent<Slot>().isFull)
+                    WeaponSlot _weapon = weaponSlot.GetComponent<WeaponSlot>();
+                    if (!_weapon.isFull)
                     {
-                        weaponSlot.GetComponent<Slot>().isFull = true;
-                        weaponSlot.GetComponent<Slot>().itemID = ID;
-                        weaponSlot.GetComponent<Slot>().m_Image.sprite = spriteR;
+                        _weapon.isFull = true;
+                        _weapon.itemID = property.ID;
+                        _weapon.m_Image.sprite = property.sprite;
                         if (weaponHP > 1)
                         {
-                            weaponSlot.GetComponent<Slot>().hpText.text = weaponHP.ToString();
-                            weaponSlot.GetComponent<Slot>().hpText.gameObject.SetActive(true);
+                            _weapon.hpText.text = weaponHP.ToString();
+                            _weapon.hpText.gameObject.SetActive(true);
                         }
                         Destroy(gameObject);
                     }
@@ -42,11 +44,12 @@ public class Weapon : ItemProperty
                 case KinfOfProtection.Trap:
                     foreach (GameObject trapSlot in trapSlots)
                     {
-                        if (!trapSlot.GetComponent<Slot>().isFull)
+                        Slot _trap = trapSlot.GetComponent<Slot>();
+                        if (!_trap.isFull)
                         {
-                            trapSlot.GetComponent<Slot>().isFull = true;
-                            trapSlot.GetComponent<Slot>().itemID = ID;
-                            trapSlot.GetComponent<Slot>().m_Image.sprite = spriteR;
+                            _trap.isFull = true;
+                            _trap.itemID = property.ID;
+                            _trap.m_Image.sprite = property.sprite;
                             Destroy(gameObject);
                             break;
                         }

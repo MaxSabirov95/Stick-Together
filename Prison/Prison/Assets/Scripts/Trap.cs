@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(BoxCollider2D))] //בודר אם יש קוליידר אם לא מיצר אחד 
 public class Trap : MonoBehaviour
 {
     public float trapDuration;

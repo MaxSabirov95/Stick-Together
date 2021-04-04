@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : ItemProperty
+public class Item : MonoBehaviour
 {
     public enum item { bottle,iron,mask,screw,wood}
     public item _item;
-    public GameObject[] slots;
 
-    bool isPlayerOn;
+    public ItemProperty property;
+
+    private GameObject[] slots;
+    private bool isPlayerOn;
 
     void Start()
     {
-        slots = GameObject.FindGameObjectsWithTag("Slot");
+        slots = SlotsRef.instance.regular;
     }
 
     private void Update()
@@ -21,29 +23,13 @@ public class Item : ItemProperty
         {
             foreach (GameObject slot in slots)
             {
-                if (!slot.GetComponent<Slot>().isFull)
+                Slot _slot = slot.GetComponent<Slot>();
+                if (!_slot.isFull)
                 {
-                    switch (_item)
-                    {
-                        case item.bottle:
-                            BlackBoard.playerInventory.itemsId[0]++;
-                            break;
-                        case item.iron:
-                            BlackBoard.playerInventory.itemsId[1]++;
-                            break;
-                        case item.mask:
-                            BlackBoard.playerInventory.itemsId[2]++;
-                            break;
-                        case item.screw:
-                            BlackBoard.playerInventory.itemsId[3]++;
-                            break;
-                        case item.wood:
-                            BlackBoard.playerInventory.itemsId[4]++;
-                            break;
-                    }
-                    slot.GetComponent<Slot>().isFull = true;
-                    slot.GetComponent<Slot>().itemID = ID;
-                    slot.GetComponent<Slot>().m_Image.sprite = spriteR;
+                    BlackBoard.playerInventory.itemsId[(int) _item]++;
+                    _slot.isFull = true;
+                    _slot.itemID = property.ID;
+                    _slot.m_Image.sprite = property.sprite;
                     Destroy(gameObject);
                     break;
                 }
