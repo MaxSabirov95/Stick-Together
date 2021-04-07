@@ -121,11 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f961d0b7849d04b809801dfd546454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteR: {fileID: 21300000, guid: dff887a6087c03c4b9245e41d4b94e47, type: 3}
-  ID: 4
   _item: 4
-  slots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  property:
+    sprite: {fileID: 21300000, guid: dff887a6087c03c4b9245e41d4b94e47, type: 3}
+    ID: 4

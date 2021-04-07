@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum item { bottle, iron, mask, screw, wood }
 public class Item : MonoBehaviour
 {
-    public enum item { bottle,iron,mask,screw,wood}
     public item _item;
 
     public ItemProperty property;
@@ -29,7 +29,7 @@ public class Item : MonoBehaviour
                     BlackBoard.playerInventory.itemsId[(int) _item]++;
                     _slot.isFull = true;
                     _slot.itemID = property.ID;
-                    _slot.m_Image.sprite = property.sprite;
+                    _slot.m_Image.sprite = BlackBoard.allgameItems.itemToSprite[_item];
                     Destroy(gameObject);
                     break;
                 }

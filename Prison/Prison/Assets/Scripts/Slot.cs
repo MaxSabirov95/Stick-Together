@@ -17,12 +17,21 @@ public class Slot : MonoBehaviour
         m_Image = GetComponent<Image>();
     }
 
-    public void DropItem()
+    public void DropItem(bool isWeapon)
     {
         if (isFull)
         {
-            BlackBoard.allgameItems.InstansiateItem(itemID);
-            BlackBoard.playerInventory.itemsId[itemID]--;
+            if (isWeapon)
+            {
+                BlackBoard.allgameItems.InstansiateWeapon(itemID,0);
+                BlackBoard.playerInventory.itemsId[5+itemID]--;
+            }
+            else
+            {
+                BlackBoard.allgameItems.InstansiateItem(itemID);
+                BlackBoard.playerInventory.itemsId[itemID]--;
+            }
+            
             itemID = 0;
             isFull = false;
             m_Image.sprite = null;
@@ -36,10 +45,17 @@ public class Slot : MonoBehaviour
         m_Image.sprite = null;
     }
 
-    public void FillSlot(int ID, Sprite sprite)
+    public void FillSlot(int ID ,bool isWeapon)
     {
         isFull = true;
         itemID = ID;
-        m_Image.sprite = sprite;
+        if (isWeapon)
+        {
+            m_Image.sprite = BlackBoard.allgameItems.weaponToSprite[(weapon)ID];
+        }
+        else
+        {
+            m_Image.sprite = BlackBoard.allgameItems.itemToSprite[(item)ID];
+        }
     }
 }

@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour
                     {
                         _weapon.isFull = true;
                         _weapon.itemID = property.ID;
-                        _weapon.m_Image.sprite = property.sprite;
+                        _weapon.m_Image.sprite = BlackBoard.allgameItems.weaponToSprite[(weapon)property.ID];
                         if (weaponHP > 1)
                         {
                             _weapon.hpText.text = weaponHP.ToString();
@@ -49,7 +49,7 @@ public class Weapon : MonoBehaviour
                         {
                             _trap.isFull = true;
                             _trap.itemID = property.ID;
-                            _trap.m_Image.sprite = property.sprite;
+                            _trap.m_Image.sprite = BlackBoard.allgameItems.weaponToSprite[(weapon)property.ID];
                             Destroy(gameObject);
                             break;
                         }

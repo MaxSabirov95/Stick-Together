@@ -95,12 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28ff0a00d1e2734db0b0b2e9e22cb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteR: {fileID: 21300000, guid: feee3d44d984442459c8d32c4aa5db27, type: 3}
-  ID: 1
   kinfOfProtection: 1
-  trapSlots: []
-  weaponSlot: {fileID: 0}
-  weaponHP: 79
+  property:
+    ID: 1
+  weaponHP: 0
 --- !u!61 &-7609648484917002768
 BoxCollider2D:
   m_ObjectHideFlags: 0

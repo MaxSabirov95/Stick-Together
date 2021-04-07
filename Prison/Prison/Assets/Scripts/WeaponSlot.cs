@@ -41,12 +41,11 @@ public class WeaponSlot : Slot
             try
             {
                 BlackBoard.allgameItems.InstansiateWeapon(itemID, int.Parse(hpText.text));
-                hpText.text = 0.ToString();
+                hpText.text = "0";
                 hpText.gameObject.SetActive(false);
             }
             catch (System.NullReferenceException)
             {
-
                 BlackBoard.allgameItems.InstansiateTrap(itemID);
             }
             BlackBoard.playerInventory.itemsId[itemID]--;

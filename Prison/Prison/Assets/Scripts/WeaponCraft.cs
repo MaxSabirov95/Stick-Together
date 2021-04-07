@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum weapon { baseball, trap, flashbang }
 public class WeaponCraft : MonoBehaviour
 {
-    public enum weapon { baseball, trap, flashbang }
     public weapon _weapon;
     private GameObject[] slots;
     private GameObject[] trapSlots;
     private WeaponSlot weaponSlot;
+    public int ID;
+
     void Start()
     {
         trapSlots = SlotsRef.instance.traps;
@@ -28,9 +30,9 @@ public class WeaponCraft : MonoBehaviour
                         MergeItems(4,4);
                         BlackBoard.playerInventory.itemsId[4] -= 2;
                         BlackBoard.playerInventory.itemsId[5]++;
-                        weaponSlot.FillSlot(ID, sprite);
+                        weaponSlot.FillSlot(ID,true);
                         weaponSlot.hpText.gameObject.SetActive(true);
-                        weaponSlot.hpText.text = 100.ToString();
+                        weaponSlot.hpText.text = "100";
                         break;
                     }
                 }
@@ -53,7 +55,7 @@ public class WeaponCraft : MonoBehaviour
                                     BlackBoard.playerInventory.itemsId[1]--;
                                     BlackBoard.playerInventory.itemsId[3]--;
                                     BlackBoard.playerInventory.itemsId[6]++;
-                                    trapSlot.GetComponent<Slot>().FillSlot(ID, sprite);
+                                    trapSlot.GetComponent<Slot>().FillSlot(ID,true);
                                     break;
                                 }
                             }
@@ -70,7 +72,7 @@ public class WeaponCraft : MonoBehaviour
                                     BlackBoard.playerInventory.itemsId[0]--;
                                     BlackBoard.playerInventory.itemsId[2]--;
                                     BlackBoard.playerInventory.itemsId[7]++;
-                                    trapSlot.GetComponent<Slot>().FillSlot(ID, sprite);
+                                    trapSlot.GetComponent<Slot>().FillSlot(ID,true);
                                     break;
                                 }
                             }

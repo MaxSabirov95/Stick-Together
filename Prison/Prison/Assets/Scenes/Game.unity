@@ -526,7 +526,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 59664933}
         m_MethodName: DropItem
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 196270727}
         m_MethodName: DropWeapon
         m_Mode: 1
         m_Arguments:
@@ -1015,7 +1015,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &196270725
 MonoBehaviour:
@@ -1069,8 +1069,8 @@ MonoBehaviour:
   isFull: 0
   button: {fileID: 0}
   itemID: 0
-  m_Image: {fileID: 0}
-  hpText: {fileID: 0}
+  m_Image: {fileID: 196270725}
+  hpText: {fileID: 835857721}
 --- !u!1 &204145731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,8 +1232,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 218822835}
-        m_MethodName: 
+      - m_Target: {fileID: 218822840}
+        m_MethodName: Craft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1292,12 +1292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5063162cd22d6514494669e606cb6597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteR: {fileID: 21300000, guid: 103e69f048feec041a05bc55df697e0f, type: 3}
-  ID: 0
   _weapon: 0
-  slots: []
-  trapSlots: []
-  weaponSlot: {fileID: 0}
+  ID: 0
 --- !u!4 &244053245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4855573234273222102, guid: b8e385fd0c8187543b99c7492cad5de1,
@@ -1567,12 +1563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5063162cd22d6514494669e606cb6597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteR: {fileID: 21300000, guid: feee3d44d984442459c8d32c4aa5db27, type: 3}
-  ID: 1
   _weapon: 1
-  slots: []
-  trapSlots: []
-  weaponSlot: {fileID: 0}
+  ID: 1
 --- !u!1 &397997032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,7 +2190,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 450208715}
         m_MethodName: DropItem
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9590,12 +9582,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5063162cd22d6514494669e606cb6597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteR: {fileID: 21300000, guid: 5f18eb3156f3e57479942a8046ae0d3e, type: 3}
-  ID: 2
   _weapon: 2
-  slots: []
-  trapSlots: []
-  weaponSlot: {fileID: 0}
+  ID: 2
 --- !u!1001 &1341617640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9836,7 +9824,7 @@ GameObject:
   - component: {fileID: 1388585113}
   - component: {fileID: 1388585112}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Panel - Slots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10438,15 +10426,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1570440910}
-        m_MethodName: DropWeapon
-        m_Mode: 1
+        m_MethodName: DropItem
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1570440908
 MonoBehaviour:
@@ -10762,7 +10750,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1667255932}
         m_MethodName: DropItem
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11774,15 +11762,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1859347457}
-        m_MethodName: DropWeapon
-        m_Mode: 1
+        m_MethodName: DropItem
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1859347455
 MonoBehaviour:
@@ -11921,7 +11909,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1906563706}
         m_MethodName: DropItem
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12344,8 +12332,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015658875}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0528615, y: -0.6746775, z: -1.1064453}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.0528564, y: -0.6746826, z: -1.1064453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12363,6 +12351,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb60377967169cd47a24dceb79542ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponsSprites:
+  - {fileID: 21300000, guid: 103e69f048feec041a05bc55df697e0f, type: 3}
+  - {fileID: 21300000, guid: feee3d44d984442459c8d32c4aa5db27, type: 3}
+  - {fileID: 21300000, guid: 5f18eb3156f3e57479942a8046ae0d3e, type: 3}
+  itemsSprites:
+  - {fileID: 21300000, guid: 552bc69455fef9c45bd296bd200627ac, type: 3}
+  - {fileID: 21300000, guid: 5509da95eb4b1e14499aaa33a6c6d875, type: 3}
+  - {fileID: 21300000, guid: 07b2e7fa979f7da44b88479414dd54a7, type: 3}
+  - {fileID: 21300000, guid: 0bec9edfd915c0141965704eb448b89e, type: 3}
+  - {fileID: 21300000, guid: dff887a6087c03c4b9245e41d4b94e47, type: 3}
   items:
   - {fileID: 4855573234273222096, guid: b8e385fd0c8187543b99c7492cad5de1, type: 3}
   - {fileID: 2068962754712646144, guid: d70b0ff2f1c8b164483267068c7c68a9, type: 3}
