@@ -23,18 +23,12 @@ public class WeaponCraft : MonoBehaviour
         switch (_weapon)
         {
             case weapon.baseball:
-                if (BlackBoard.playerInventory.itemsId[4] >= 2)
+                if (!weaponSlot.GetComponent<Slot>().isFull)
                 {
-                    if (!weaponSlot.GetComponent<Slot>().isFull)
-                    {
-                        MergeItems(4,4);
-                        BlackBoard.playerInventory.itemsId[4] -= 2;
-                        BlackBoard.playerInventory.itemsId[5]++;
-                        weaponSlot.FillSlot(ID,true);
-                        weaponSlot.hpText.gameObject.SetActive(true);
-                        weaponSlot.hpText.text = "100";
-                        break;
-                    }
+                    MergeItems(4, 4, 5);
+                    weaponSlot.hpText.gameObject.SetActive(true);
+                    weaponSlot.hpText.text = "100";
+                    break;
                 }
                 break;
         }
@@ -45,46 +39,27 @@ public class WeaponCraft : MonoBehaviour
                 switch (_weapon)
                 {
                     case weapon.trap:
-                        if (BlackBoard.playerInventory.itemsId[1] >= 1 && BlackBoard.playerInventory.itemsId[3] >= 1)
-                        {
-                            MergeItems(1, 3);
-                            foreach (GameObject trapSlot in trapSlots)
-                            {
-                                if (!trapSlot.GetComponent<Slot>().isFull)
-                                {
-                                    BlackBoard.playerInventory.itemsId[1]--;
-                                    BlackBoard.playerInventory.itemsId[3]--;
-                                    BlackBoard.playerInventory.itemsId[6]++;
-                                    trapSlot.GetComponent<Slot>().FillSlot(ID,true);
-                                    break;
-                                }
-                            }
-                        }
+                        MergeItems(1, 3, 6);
                         break;
                     case weapon.flashbang:
-                        if (BlackBoard.playerInventory.itemsId[0] >= 1 && BlackBoard.playerInventory.itemsId[2] >= 1)
-                        {
-                            MergeItems(0, 2);
-                            foreach (GameObject trapSlot in trapSlots)
-                            {
-                                if (!trapSlot.GetComponent<Slot>().isFull)
-                                {
-                                    BlackBoard.playerInventory.itemsId[0]--;
-                                    BlackBoard.playerInventory.itemsId[2]--;
-                                    BlackBoard.playerInventory.itemsId[7]++;
-                                    trapSlot.GetComponent<Slot>().FillSlot(ID,true);
-                                    break;
-                                }
-                            }
-                        }
+                        MergeItems(0, 2, 7);
                         break;
                 }
             }
         }
     }
 
-    public void MergeItems(int item1, int item2)
+    public void MergeItems(int item1, int item2 , int result)
     {
+        if ((item1 == item2) && (BlackBoard.playerInventory.itemsId[item1] < 2))
+        {
+            return;
+        }
+        else if (BlackBoard.playerInventory.itemsId[item1] < 1 && BlackBoard.playerInventory.itemsId[item2] < 1)
+        {
+            return;
+        }
+
         foreach (GameObject slot in slots)
         {
             if (slot.GetComponent<Slot>().itemID == item1)
@@ -101,6 +76,17 @@ public class WeaponCraft : MonoBehaviour
                         }
                     }
                 }
+                break;
+            }
+        }
+        foreach (GameObject trapSlot in trapSlots)
+        {
+            if (!trapSlot.GetComponent<Slot>().isFull)
+            {
+                BlackBoard.playerInventory.itemsId[item1]--;
+                BlackBoard.playerInventory.itemsId[item2]--;
+                BlackBoard.playerInventory.itemsId[result]++;
+                trapSlot.GetComponent<Slot>().FillSlot(ID, true);
                 break;
             }
         }

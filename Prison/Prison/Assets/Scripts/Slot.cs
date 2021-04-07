@@ -31,10 +31,8 @@ public class Slot : MonoBehaviour
                 BlackBoard.allgameItems.InstansiateItem(itemID);
                 BlackBoard.playerInventory.itemsId[itemID]--;
             }
-            
-            itemID = 0;
-            isFull = false;
-            m_Image.sprite = null;
+
+            EmptySlot();
         }
     }
 
