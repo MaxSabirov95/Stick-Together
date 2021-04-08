@@ -8,13 +8,14 @@ public class WeaponCraft : MonoBehaviour
     public weapon _weapon;
     private GameObject[] slots;
     private GameObject[] trapSlots;
-    private WeaponSlot weaponSlot;
+    private GameObject weaponSlot;
     public int ID;
+    public bool isWeapon;
 
     void Start()
     {
         trapSlots = SlotsRef.instance.traps;
-        weaponSlot = SlotsRef.instance.weapon.GetComponent<WeaponSlot>();
+        weaponSlot = SlotsRef.instance.weapon;
         slots = SlotsRef.instance.regular;
     }
 
@@ -26,8 +27,8 @@ public class WeaponCraft : MonoBehaviour
                 if (!weaponSlot.GetComponent<Slot>().isFull)
                 {
                     MergeItems(4, 4, 5);
-                    weaponSlot.hpText.gameObject.SetActive(true);
-                    weaponSlot.hpText.text = "100";
+                    weaponSlot.GetComponent<WeaponSlot>().hpText.gameObject.SetActive(true);
+                    weaponSlot.GetComponent<WeaponSlot>().hpText.text = "100";
                     break;
                 }
                 break;
@@ -79,15 +80,26 @@ public class WeaponCraft : MonoBehaviour
                 break;
             }
         }
-        foreach (GameObject trapSlot in trapSlots)
+        
+        if (isWeapon)
         {
-            if (!trapSlot.GetComponent<Slot>().isFull)
+            BlackBoard.playerInventory.itemsId[item1]--;
+            BlackBoard.playerInventory.itemsId[item2]--;
+            BlackBoard.playerInventory.itemsId[result]++;
+            weaponSlot.GetComponent<Slot>().FillSlot(ID, true);
+        }
+        else
+        {
+            foreach (GameObject trapSlot in trapSlots)
             {
-                BlackBoard.playerInventory.itemsId[item1]--;
-                BlackBoard.playerInventory.itemsId[item2]--;
-                BlackBoard.playerInventory.itemsId[result]++;
-                trapSlot.GetComponent<Slot>().FillSlot(ID, true);
-                break;
+                if (!trapSlot.GetComponent<Slot>().isFull)
+                {
+                    BlackBoard.playerInventory.itemsId[item1]--;
+                    BlackBoard.playerInventory.itemsId[item2]--;
+                    BlackBoard.playerInventory.itemsId[result]++;
+                    trapSlot.GetComponent<Slot>().FillSlot(ID, true);
+                    break;
+                }
             }
         }
     }
