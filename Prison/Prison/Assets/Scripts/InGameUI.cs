@@ -7,8 +7,10 @@ public class InGameUI : MonoBehaviour
 {
     public GameObject crafterPanel;
     public GameObject pausePanel;
+    public GameObject map;
     bool isCrafterPanelOn;
     bool isPauseMenuOn;
+    bool isMapOn;
 
     private void Awake()
     {
@@ -26,6 +28,12 @@ public class InGameUI : MonoBehaviour
     {
         isCrafterPanelOn = !isCrafterPanelOn;
         crafterPanel.SetActive(isCrafterPanelOn);
+    }
+
+    public void Map()
+    {
+        isMapOn = !isMapOn;
+        map.SetActive(isMapOn);
     }
 
     public void PauseMenu()

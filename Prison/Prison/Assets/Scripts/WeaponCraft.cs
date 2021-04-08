@@ -46,6 +46,7 @@ public class WeaponCraft : MonoBehaviour
                         MergeItems(0, 2, 7);
                         break;
                 }
+                break;
             }
         }
     }

@@ -29,5 +29,10 @@ public class GameManager : MonoBehaviour
         {
             BlackBoard.inGameUI.PauseMenu();
         }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            BlackBoard.inGameUI.Map();
+        }
     }
 }
