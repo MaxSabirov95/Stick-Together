@@ -5,10 +5,23 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed;
+    [SerializeField] float walkingSpeed;
+    [SerializeField] float runningSpeed;
     public Rigidbody2D rB2D;
     Vector2 movement;
+    public float maxStamina;
+    float currentStamina;
+    public Bar staminaBar;
+    bool isSprinting;
     //public Animator anim;
     public GameObject flashLight;
+
+    private void Start()
+    {
+        moveSpeed = walkingSpeed;
+        currentStamina = maxStamina;
+        staminaBar.SetMaxSlider(maxStamina);
+    }
 
     void Update()
     {
@@ -56,6 +69,30 @@ public class PlayerMovement : MonoBehaviour
         {
             flashLight.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isSprinting = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isSprinting = false; 
+        }
+        if (isSprinting && currentStamina > 0)
+        {
+            moveSpeed = runningSpeed;
+            currentStamina -= Time.deltaTime;
+            staminaBar.SetSlider(currentStamina);
+        }
+        else
+        {
+            moveSpeed = walkingSpeed;
+            if (currentStamina < maxStamina)
+            {
+                currentStamina += 1*(Time.deltaTime * 0.25f);
+                staminaBar.SetSlider(currentStamina);
+            }
+        }
     }
 
     void PointAndClick()
@@ -65,6 +102,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rB2D.MovePosition(rB2D.position+movement * moveSpeed * Time.fixedDeltaTime);
+        rB2D.MovePosition(rB2D.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }

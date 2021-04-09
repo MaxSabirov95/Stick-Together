@@ -20,17 +20,22 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        BlackBoard.flashLight.CheckLight();
+
         if (isElectricityLeverOn)
         {
             lights.GetComponent<Light2D>().intensity = 0.5f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            BlackBoard.flashLight.TurnOnOff();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             BlackBoard.inGameUI.PauseMenu();
         }
-
-        if (Input.GetKeyDown(KeyCode.X))
+        else if (Input.GetKeyDown(KeyCode.X))
         {
             BlackBoard.inGameUI.Map();
         }
