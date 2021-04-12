@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float walkingSpeed;
     [SerializeField] float runningSpeed;
     public Rigidbody2D rB2D;
+    public int playerHP;
     Vector2 movement;
     public float maxStamina;
     float currentStamina;
@@ -92,6 +93,16 @@ public class PlayerMovement : MonoBehaviour
                 currentStamina += 1*(Time.deltaTime * 0.25f);
                 staminaBar.SetSlider(currentStamina);
             }
+        }
+
+        if (playerHP<=0)
+        {
+            Time.timeScale = 0;
+            BlackBoard.inGameUI.deathPanel.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            playerHP = 0;
         }
     }
 

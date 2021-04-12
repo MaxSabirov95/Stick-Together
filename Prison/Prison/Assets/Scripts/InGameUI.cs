@@ -7,6 +7,7 @@ public class InGameUI : MonoBehaviour
 {
     public GameObject crafterPanel;
     public GameObject pausePanel;
+    public GameObject deathPanel;
     public GameObject map;
     bool isCrafterPanelOn;
     bool isPauseMenuOn;
@@ -63,5 +64,12 @@ public class InGameUI : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void TryAgain()
+    {
+        Time.timeScale = 1;
+        deathPanel.SetActive(false);
+        SceneManager.LoadScene("Game");
     }
 }
