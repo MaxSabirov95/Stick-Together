@@ -8,9 +8,11 @@ public class InGameUI : MonoBehaviour
     public GameObject crafterPanel;
     public GameObject pausePanel;
     public GameObject map;
+    public GameObject respawnScreen;
     bool isCrafterPanelOn;
     bool isPauseMenuOn;
     bool isMapOn;
+    bool isRespawnScreenOn;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class InGameUI : MonoBehaviour
         Time.timeScale = 1;
         crafterPanel.SetActive(isCrafterPanelOn);
         pausePanel.SetActive(isPauseMenuOn);
+        respawnScreen.SetActive(isRespawnScreenOn);
     }
 
     public void Open_CloseCrafterPanel()
@@ -48,6 +51,17 @@ public class InGameUI : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+
+    public void Enable_DisableRespawnScreen()
+    {
+        isRespawnScreenOn = !isRespawnScreenOn;
+        respawnScreen.SetActive(isRespawnScreenOn);
+    }
+
+    public void Respawn()
+    {
+        SceneManager.LoadScene("Game");
     }
 
     public void Resume()
