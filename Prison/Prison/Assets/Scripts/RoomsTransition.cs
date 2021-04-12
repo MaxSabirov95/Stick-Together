@@ -12,6 +12,10 @@ public class RoomsTransition : MonoBehaviour
     public GameObject enterRoom;
     bool isPlayerIn;
 
+    private void Awake()
+    {
+        enterRoom.SetActive(false);
+    }
     void Update()
     {
         if (isPlayerIn)
