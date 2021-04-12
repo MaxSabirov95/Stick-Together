@@ -39,5 +39,9 @@ public class GameManager : MonoBehaviour
         {
             BlackBoard.inGameUI.Map();
         }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+            BlackBoard.inGameUI.Enable_DisableRespawnScreen();
+        }
     }
 }
