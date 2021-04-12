@@ -13665,6 +13665,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1315536404}
   m_CullTransparentMesh: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1321248043
 GameObject:
   m_ObjectHideFlags: 0
@@ -13788,6 +13789,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prisonDoorArea: {fileID: 507305468}
   _light: {fileID: 792894528}
+=======
+>>>>>>> parent of 63cd473 (puzzle1-not finished)
 =======
 >>>>>>> parent of 63cd473 (puzzle1-not finished)
 --- !u!1 &1337213895
@@ -24203,10 +24206,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 15
 =======
       value: 10
 >>>>>>> 63cd473e3fa7d7a859a48f37ed131926a27471c6
+=======
+      value: 11
+>>>>>>> parent of 63cd473 (puzzle1-not finished)
 =======
       value: 11
 >>>>>>> parent of 63cd473 (puzzle1-not finished)
