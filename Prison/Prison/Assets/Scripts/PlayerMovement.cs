@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     bool isSprinting;
     //public Animator anim;
     public GameObject flashLight;
+    public bool isPlayerHidding;
 
     private void Start()
     {
@@ -38,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         //anim.SetFloat("Speed", movement.sqrMagnitude);
         //-- Brackeys TOP DOWN MOVEMENT in Unity Video
 
-        if(movement.x > 0 && movement.y > 0)
+        if (movement.x > 0 && movement.y > 0)
         {
             flashLight.transform.rotation = Quaternion.Euler(0, 0,315);
         }
@@ -113,6 +114,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rB2D.MovePosition(rB2D.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (isPlayerHidding)
+        {
+            return;
+        }
+        else
+        {
+            rB2D.MovePosition(rB2D.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
     }
 }

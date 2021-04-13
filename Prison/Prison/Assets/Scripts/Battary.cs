@@ -1,11 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Battary : MonoBehaviour
 {
     public int power;
     private bool isPlayerOn;
+
+    public Text pickUpText;
+
+    private void Awake()
+    {
+        pickUpText = GameObject.FindGameObjectWithTag("Text - Pick Up").GetComponent<Text>();
+    }
+
+    private void Start()
+    {
+        pickUpText.enabled = isPlayerOn;
+    }
 
     private void Update()
     {
@@ -16,11 +29,12 @@ public class Battary : MonoBehaviour
         }     
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
         {
             isPlayerOn = true;
+            pickUpText.enabled = isPlayerOn;
         }
     }
     private void OnTriggerExit2D(Collider2D col)
@@ -28,6 +42,7 @@ public class Battary : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             isPlayerOn = false;
+            pickUpText.enabled = isPlayerOn;
         }
     }
 }

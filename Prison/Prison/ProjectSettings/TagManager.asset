@@ -9,6 +9,10 @@ TagManager:
   - Trap
   - Enemy
   - Trap Slot
+  - PlayerSprite
+  - Text - Pick Up
+  - Text - Hide
+  - Text - Enter Rooms
   layers:
   - Default
   - TransparentFX

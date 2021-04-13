@@ -15,7 +15,14 @@ public class RoomsTransition : MonoBehaviour
     private void Awake()
     {
         enterRoom.SetActive(false);
+        doorUI = GameObject.FindGameObjectWithTag("Text - Enter Rooms").GetComponent<Text>();
     }
+
+    private void Start()
+    {
+        doorUI.enabled = isPlayerIn;
+    }
+
     void Update()
     {
         if (isPlayerIn)
@@ -42,7 +49,7 @@ public class RoomsTransition : MonoBehaviour
                     doorUI.text = "Press 'E' To Enter";
                     break;
             }
-            doorUI.gameObject.SetActive(true);
+            doorUI.enabled = isPlayerIn;
         }
     }
 
@@ -51,7 +58,7 @@ public class RoomsTransition : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             isPlayerIn = false;
-            doorUI.gameObject.SetActive(false);
+            doorUI.enabled = isPlayerIn;
         }
     }
 }
