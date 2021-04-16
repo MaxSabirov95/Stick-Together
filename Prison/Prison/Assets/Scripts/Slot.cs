@@ -38,7 +38,7 @@ public class Slot : MonoBehaviour
 
     public void EmptySlot()
     {
-        itemID = 0;
+        itemID = -1;
         isFull = false;
         m_Image.sprite = null;
     }

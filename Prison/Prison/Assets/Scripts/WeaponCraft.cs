@@ -74,33 +74,29 @@ public class WeaponCraft : MonoBehaviour
                         {
                             slot.GetComponent<Slot>().EmptySlot();
                             slot1.GetComponent<Slot>().EmptySlot();
+                            BlackBoard.playerInventory.itemsId[item1]--;
+                            BlackBoard.playerInventory.itemsId[item2]--;
+                            BlackBoard.playerInventory.itemsId[result]++;
+                            if (isWeapon)
+                            {
+                                weaponSlot.GetComponent<Slot>().FillSlot(ID, true);
+                            }
+                            else
+                            {
+                                foreach (GameObject trapSlot in trapSlots)
+                                {
+                                    if (!trapSlot.GetComponent<Slot>().isFull)
+                                    {
+                                        trapSlot.GetComponent<Slot>().FillSlot(ID, true);
+                                        break;
+                                    }
+                                }
+                            }
                             break;
                         }
                     }
                 }
                 break;
-            }
-        }
-        
-        if (isWeapon)
-        {
-            BlackBoard.playerInventory.itemsId[item1]--;
-            BlackBoard.playerInventory.itemsId[item2]--;
-            BlackBoard.playerInventory.itemsId[result]++;
-            weaponSlot.GetComponent<Slot>().FillSlot(ID, true);
-        }
-        else
-        {
-            foreach (GameObject trapSlot in trapSlots)
-            {
-                if (!trapSlot.GetComponent<Slot>().isFull)
-                {
-                    BlackBoard.playerInventory.itemsId[item1]--;
-                    BlackBoard.playerInventory.itemsId[item2]--;
-                    BlackBoard.playerInventory.itemsId[result]++;
-                    trapSlot.GetComponent<Slot>().FillSlot(ID, true);
-                    break;
-                }
             }
         }
     }
