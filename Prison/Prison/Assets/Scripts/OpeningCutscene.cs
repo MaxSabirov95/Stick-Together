@@ -12,7 +12,7 @@ public class OpeningCutscene : MonoBehaviour
     private void Start()
     {
         //messageText.text = "Hello World!";
-        _textWriter.AddWriter(messageText, "                                                                        1:47 AM" + 
+        _textWriter.AddWriter(messageText, "1:47 AM" + 
             "\n \n Officer: 102." + 
             "\n Woman: My Kids are gone! I wasn't home for 3 hours and now they are gone!" + 
             "\n Officer: Miss, Can you repeat that sentence?" +
@@ -24,7 +24,7 @@ public class OpeningCutscene : MonoBehaviour
             "\n Officer: What are their names?" +
             "\n Woman: Nastia and Roman Zaitzev, Nastia is 17 years old and Roman is 18." +
             "\n Officer: Miss don't worry I've already sent some officers there." +
-            "\n \n                                                                      3 hours earlier...", 0.1f, true);
+            "\n \n 3 hours earlier...", 0.1f, true);
     }
 
     public void Continue()
