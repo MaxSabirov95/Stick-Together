@@ -1568,19 +1568,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 43
+    m_Font: {fileID: 12800000, guid: f066fbd58e1fdc246a39e02deee335d3, type: 3}
+    m_FontSize: 75
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 67
+    m_MinSize: 7
+    m_MaxSize: 78
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Craft Trap
+  m_Text: Craft
 --- !u!222 &204145734
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11105,7 +11105,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0bec9edfd915c0141965704eb448b89e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79330d02b6225544a905e0761a9601cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12723,7 +12723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1527705147
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14666,7 +14666,7 @@ SpriteRenderer:
   m_Size: {x: 1.9266666, y: 1.4933333}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1851263126
@@ -21132,7 +21132,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 552bc69455fef9c45bd296bd200627ac, type: 3}
   - {fileID: 21300000, guid: 7cc60912ad0ceec43afc49536679e3fc, type: 3}
   - {fileID: 21300000, guid: 07b2e7fa979f7da44b88479414dd54a7, type: 3}
-  - {fileID: 21300000, guid: 0bec9edfd915c0141965704eb448b89e, type: 3}
+  - {fileID: 21300000, guid: 79330d02b6225544a905e0761a9601cb, type: 3}
   - {fileID: 21300000, guid: feedcedd94901374e9a8c511e4ce1cd0, type: 3}
   items:
   - {fileID: 4855573234273222096, guid: b8e385fd0c8187543b99c7492cad5de1, type: 3}
