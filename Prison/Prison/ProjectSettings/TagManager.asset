@@ -13,6 +13,7 @@ TagManager:
   - Text - Pick Up
   - Text - Hide
   - Text - Enter Rooms
+  - WanderZone
   layers:
   - Default
   - TransparentFX
@@ -23,11 +24,11 @@ TagManager:
   - 
   - 
   - Walls and Obstacles
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Floor
+  - Enemy
+  - Items
+  - WanderZone
+  - Player
   - 
   - 
   - 
