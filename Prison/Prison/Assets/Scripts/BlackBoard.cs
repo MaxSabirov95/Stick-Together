@@ -9,4 +9,5 @@ public static class BlackBoard
     public static PlayerInventory playerInventory;
     public static InGameUI inGameUI;
     public static FlashLight flashLight;
+    public static Puzzle1Generator puzzle1;
 }

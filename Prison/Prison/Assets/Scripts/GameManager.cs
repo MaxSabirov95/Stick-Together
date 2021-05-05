@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public bool isElectricityLeverOn;
     public GameObject lights;
+    public bool ifHaveGeneratorKey;
+    public bool ifHaveGasCan;
 
     private void Awake()
     {
