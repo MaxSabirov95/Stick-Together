@@ -24,8 +24,7 @@ public class Battary : MonoBehaviour
     {
         if (isPlayerOn && Input.GetKeyDown(KeyCode.E))
         {
-            //BlackBoard.flashLight.AddPower(power);
-            BlackBoard.battaryButton.AddPercents(power);
+            BlackBoard.flashLight.AddPower(power);
             Destroy(gameObject);
         }     
     }
