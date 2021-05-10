@@ -10,6 +10,7 @@ public class Puzzle1 : MonoBehaviour
 
     private void Awake()
     {
+        BlackBoard.puzzle1 = this;
         prisonDoorArea.SetActive(false);
         _light.SetActive(false);
     }
@@ -29,7 +30,11 @@ public class Puzzle1 : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            isPlayerIn = true;
+            if (BlackBoard.gameManager.ifHaveGasCan && BlackBoard.gameManager.ifHaveGeneratorKey)
+            {
+                isPlayerIn = true;
+                //Debug.Log("--------------------Generator On");
+            }
         }
     }
 
