@@ -18,6 +18,13 @@ public class PlayerMovement : MonoBehaviour
     public GameObject flashLight;
     public bool isPlayerHidding;
 
+    public Transform eyeTrans;
+
+    public float stepRate;
+    float currentStepDelta = 0;
+    [SerializeField]
+    float currentStepVolume;
+
     private void Start()
     {
         moveSpeed = walkingSpeed;
@@ -121,6 +128,19 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rB2D.MovePosition(rB2D.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+            currentStepDelta += (movement * moveSpeed * Time.fixedDeltaTime).magnitude;
+
+            if (currentStepDelta >= stepRate)
+            {
+                currentStepDelta = 0;
+                //play relevant step sound (decide on which type before this, somewhere else)
+                //have some enums/straight-up-names of the directories to plug into the FMOD call
+
+                AI_StateMachine.Instance.HearSomething(transform.position, currentStepVolume);
+
+
+            }
         }
     }
 }
