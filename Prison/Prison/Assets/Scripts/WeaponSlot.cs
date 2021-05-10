@@ -51,7 +51,7 @@ public class WeaponSlot : Slot
             BlackBoard.playerInventory.itemsId[itemID]--;
             itemID = 0;
             isFull = false;
-            m_Image.sprite = null;
+            m_Image.sprite = slotSprite;
         }
     }
 

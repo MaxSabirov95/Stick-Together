@@ -19,7 +19,7 @@ public class AI_Wander : AIState
             if(hit.CompareTag("WanderZone"))
             {
                 wanderZone = hit;
-                Debug.LogError("wander zone detected!");
+                //Debug.LogError("wander zone detected!");
 
             }
         

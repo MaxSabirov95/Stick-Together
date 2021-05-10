@@ -8,6 +8,7 @@ public class Slot : MonoBehaviour
     public bool isFull;
     public Button button;
     public int itemID;
+    public Sprite slotSprite;
 
     public Image m_Image;
 
@@ -40,7 +41,7 @@ public class Slot : MonoBehaviour
     {
         itemID = -1;
         isFull = false;
-        m_Image.sprite = null;
+        m_Image.sprite = slotSprite;
     }
 
     public void FillSlot(int ID ,bool isWeapon)
