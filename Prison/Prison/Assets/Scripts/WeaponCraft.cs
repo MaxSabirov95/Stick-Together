@@ -27,6 +27,10 @@ public class WeaponCraft : MonoBehaviour
                 if (!weaponSlot.GetComponent<Slot>().isFull)
                 {
                     MergeItems(4, 4, 5);
+                    if (!weaponSlot.GetComponent<Slot>().isFull)
+                    {
+                        break;
+                    }
                     weaponSlot.GetComponent<WeaponSlot>().hpText.gameObject.SetActive(true);
                     weaponSlot.GetComponent<WeaponSlot>().hpText.text = "100";
                     break;

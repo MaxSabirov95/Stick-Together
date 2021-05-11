@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 public enum item { bottle, iron, mask, screw, wood }
 public class Item : MonoBehaviour
@@ -12,19 +12,21 @@ public class Item : MonoBehaviour
 
     private GameObject[] slots;
     private bool isPlayerOn;
+    [SerializeField] private SpriteRenderer _text;
 
-    public Text pickUpText;
+    //public Text pickUpText;
 
-    private void Awake()
-    {
-        pickUpText = GameObject.FindGameObjectWithTag("Text - Pick Up").GetComponent<Text>();
-    }
+    //private void Awake()
+    //{
+    //    pickUpText = GameObject.FindGameObjectWithTag("Text - Pick Up").GetComponent<Text>();
+    //}
 
     void Start()
     {
         slots = SlotsRef.instance.regular;
+        _text.enabled = false;
 
-        pickUpText.enabled = isPlayerOn;
+        //pickUpText.enabled = isPlayerOn;
     }
 
     private void Update()
@@ -52,7 +54,8 @@ public class Item : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             isPlayerOn = true;
-            pickUpText.enabled = isPlayerOn;
+            _text.enabled = true;
+            //pickUpText.enabled = isPlayerOn;
         }
     }
 
@@ -61,7 +64,8 @@ public class Item : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             isPlayerOn = false;
-            pickUpText.enabled = isPlayerOn;
+            _text.enabled = false;
+            //pickUpText.enabled = isPlayerOn;
         }
     }
 }
