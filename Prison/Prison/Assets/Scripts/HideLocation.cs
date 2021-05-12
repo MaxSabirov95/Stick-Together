@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HideLocation : MonoBehaviour
 {
@@ -9,18 +8,16 @@ public class HideLocation : MonoBehaviour
     GameObject playerSprite;
     PlayerMovement playerRef;
 
-    public Text pickUpText;
+    [SerializeField] private SpriteRenderer _textHide;
+    [SerializeField] private SpriteRenderer _textUnHide;
 
-    private void Awake()
-    {
-        pickUpText = GameObject.FindGameObjectWithTag("Text - Hide").GetComponent<Text>();
-    }
 
     void Start()
     {
         playerSprite = GameObject.FindGameObjectWithTag("PlayerSprite");
         playerRef = FindObjectOfType<PlayerMovement>();
-        pickUpText.enabled = isPlayerIn;
+        _textHide.enabled = false;
+        _textUnHide.enabled = false;
     }
 
     void Update()
@@ -29,11 +26,13 @@ public class HideLocation : MonoBehaviour
         {
             if (!playerRef.isPlayerHidding)
             {
-                pickUpText.text = "Press 'E' To Hide";
+                _textHide.enabled = true;
+                _textUnHide.enabled = false;
             }
             else
             {
-                pickUpText.text = "Press 'E' To UnHide";
+                _textUnHide.enabled = true;
+                _textHide.enabled = false;
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -58,7 +57,7 @@ public class HideLocation : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             isPlayerIn = true;
-            pickUpText.enabled = isPlayerIn;
+            _textHide.enabled = isPlayerIn;
         }
     }
 
@@ -67,7 +66,7 @@ public class HideLocation : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             isPlayerIn = false;
-            pickUpText.enabled = isPlayerIn;
+            _textHide.enabled = isPlayerIn;
         }
     }
 }
