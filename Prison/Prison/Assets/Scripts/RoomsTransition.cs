@@ -8,7 +8,7 @@ public class RoomsTransition : MonoBehaviour
     public KindOfDoor kindOfDoor;
     [SerializeField] private SpriteRenderer _enterText;
     [SerializeField] private SpriteRenderer _exitText;
-
+    public Transform itemsHolder;
     public GameObject enterRoom;
     bool isPlayerIn;
 
@@ -25,6 +25,7 @@ public class RoomsTransition : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                BlackBoard.gameManager.inWhichRoomPlayer = itemsHolder;
                 enterRoom.SetActive(true);
                 transform.parent.gameObject.SetActive(false);
             }

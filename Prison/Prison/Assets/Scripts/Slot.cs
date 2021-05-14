@@ -24,12 +24,12 @@ public class Slot : MonoBehaviour
         {
             if (isWeapon)
             {
-                BlackBoard.allgameItems.InstansiateWeapon(itemID,0);
+                BlackBoard.allgameItems.InstansiateWeapon(itemID,0, BlackBoard.gameManager.inWhichRoomPlayer);
                 BlackBoard.playerInventory.itemsId[5+itemID]--;
             }
             else
             {
-                BlackBoard.allgameItems.InstansiateItem(itemID);
+                BlackBoard.allgameItems.InstansiateItem(itemID, BlackBoard.gameManager.inWhichRoomPlayer);
                 BlackBoard.playerInventory.itemsId[itemID]--;
             }
 

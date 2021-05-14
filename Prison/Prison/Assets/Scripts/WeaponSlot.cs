@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class WeaponSlot : Slot
 {
     public Text hpText;
+    [HideInInspector] public Transform itemsHolder;
 
     void Start()
     {
@@ -40,13 +41,13 @@ public class WeaponSlot : Slot
         {
             try
             {
-                BlackBoard.allgameItems.InstansiateWeapon(itemID, int.Parse(hpText.text));
+                BlackBoard.allgameItems.InstansiateWeapon(itemID, int.Parse(hpText.text), itemsHolder);
                 hpText.text = "0";
                 hpText.gameObject.SetActive(false);
             }
             catch (System.NullReferenceException)
             {
-                BlackBoard.allgameItems.InstansiateTrap(itemID);
+                BlackBoard.allgameItems.InstansiateTrap(itemID, itemsHolder);
             }
             BlackBoard.playerInventory.itemsId[itemID]--;
             itemID = 0;

@@ -9,7 +9,7 @@ public class AllGameItems : MonoBehaviour
     public Dictionary<item, Sprite> itemToSprite;
     public List<Sprite> itemsSprites;
 
-    public GameObject[] items;
+    public Item[] items;
     public Weapon[] weapons;
     public GameObject player;
 
@@ -29,21 +29,21 @@ public class AllGameItems : MonoBehaviour
         }
     }
 
-    public void InstansiateItem(int num)
+    public void InstansiateItem(int num, Transform _object)
     {
-        Instantiate(items[num], player.transform.position, Quaternion.identity);
+         Instantiate(items[num], player.transform.position, Quaternion.identity, _object);
     }
 
     //is this just for traps? if so, the added logic here is fine
-    public void InstansiateWeapon(int num, int hp)
+    public void InstansiateWeapon(int num, int hp, Transform _object)
     {
-        Weapon weapon = Instantiate(weapons[num], player.transform.position, Quaternion.identity);
+        Weapon weapon = Instantiate(weapons[num], player.transform.position, Quaternion.identity, _object);
         weapon.GetComponent<Weapon>().weaponHP = hp;
     }
 
-    public void InstansiateTrap(int num)
+    public void InstansiateTrap(int num, Transform _object)
     {
-        Weapon weapon = Instantiate(weapons[num], player.transform.position, Quaternion.identity);
+        Weapon weapon = Instantiate(weapons[num], player.transform.position, Quaternion.identity, _object);
 
         //Alon: Here I add a Trap component to the weapon.
         // the Trap component comes with a RequiredComponent(typeof(Collider)) - so it will add a collider, 

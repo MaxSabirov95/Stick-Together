@@ -208,6 +208,7 @@ MonoBehaviour:
   property:
     ID: 1
   _text: {fileID: 9222098651277607517}
+  _itemsHolder: {fileID: 0}
 --- !u!1 &5047463582770175806
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@ public class Weapon : MonoBehaviour
                         {
                             _weapon.hpText.text = weaponHP.ToString();
                             _weapon.hpText.gameObject.SetActive(true);
-                        }
+}
                         Destroy(gameObject);
                     }
                     break;

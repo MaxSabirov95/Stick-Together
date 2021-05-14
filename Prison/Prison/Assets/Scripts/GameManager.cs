@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject lights;
     public bool ifHaveGeneratorKey;
     public bool ifHaveGasCan;
+    public Transform inWhichRoomPlayer;//For items drop
 
     private void Awake()
     {
