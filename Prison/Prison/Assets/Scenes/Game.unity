@@ -49380,7 +49380,7 @@ MonoBehaviour:
   lights: {fileID: 792894528}
   ifHaveGeneratorKey: 0
   ifHaveGasCan: 0
-  inWhichRoomPlayer: {fileID: 0}
+  inWhichRoomPlayer: {fileID: 627622661}
 --- !u!4 &2015658877
 Transform:
   m_ObjectHideFlags: 0
