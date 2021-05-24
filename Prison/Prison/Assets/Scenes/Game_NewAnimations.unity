@@ -20465,7 +20465,7 @@ GameObject:
   - component: {fileID: 879251689}
   m_Layer: 0
   m_Name: Player Image (render texture)
-  m_TagString: Untagged
+  m_TagString: PlayerSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
