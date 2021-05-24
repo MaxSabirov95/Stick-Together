@@ -25,6 +25,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float currentStepVolume;
 
+    //Alon 23/05
+    [SerializeField]
+    Animator anim; //זה האנימטור ששולט על הדמות התלת מימדית
+    [SerializeField]
+    RigController rc;
+    //Alon 23/05
+
     private void Start()
     {
         moveSpeed = walkingSpeed;
@@ -34,12 +41,22 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //Alon
-        PointAndClick();
+        
+        //Alon 23/05
+        //movement.x = Input.GetAxisRaw("Horizontal");
+        //התנועה לא צריכה לקפוץ ישר מ0 ל-1
+        //חשוב להגיד גם שזה יוצר בעיות אם 2 הכיוונים לחוצים (כי אין נורמליזציה של הוקטור)
+        //movement.y = Input.GetAxisRaw("Vertical");
 
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical") ; //זה לא מדוייק, אבל בגלל שאנחנו בעולם איזומטרי, התנועה למעלה/למטה היא קצת איטית יותר
+        //Alon 23/05
+        if (movement.magnitude > 1)
+        {
+            movement.Normalize();
+        }
+            movement.y *= 0.5625f;
 
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
 
         //anim.SetFloat("Horizontal", movement.x);
         //anim.SetFloat("Vertical", movement.y);
@@ -49,34 +66,42 @@ public class PlayerMovement : MonoBehaviour
         if (movement.x > 0 && movement.y > 0)
         {
             flashLight.transform.rotation = Quaternion.Euler(0, 0,315);
+            rc.RotateCamRig(315);
         }
         else if (movement.x < 0 && movement.y > 0)
         {
             flashLight.transform.rotation = Quaternion.Euler(0, 0, 45);
+            rc.RotateCamRig(45);
         }
         else if (movement.x < 0 && movement.y < 0)
         {
             flashLight.transform.rotation = Quaternion.Euler(0, 0, 135);
+            rc.RotateCamRig(135);
         }
         else if (movement.x > 0 && movement.y < 0)
         {
             flashLight.transform.rotation = Quaternion.Euler(0, 0, 225);
+            rc.RotateCamRig(225);
         }
         else if (movement.x < 0)
         {
             flashLight.transform.rotation = Quaternion.Euler(0, 0, 90);
+            rc.RotateCamRig(90);
         }
         else if (movement.x > 0)
         {
             flashLight.transform.rotation = Quaternion.Euler(0, 0, 270);
+            rc.RotateCamRig(270);
         }
         else if (movement.y < 0)
         {
             flashLight.transform.rotation = Quaternion.Euler(0, 0, 180);
+            rc.RotateCamRig(180);
         }
         else if (movement.y > 0)
         {
             flashLight.transform.rotation = Quaternion.Euler(0, 0, 0);
+            rc.RotateCamRig(0);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -127,7 +152,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rB2D.MovePosition(rB2D.position + movement * moveSpeed * Time.fixedDeltaTime);
+            // Alon 23/05
+            //rB2D.MovePosition(rB2D.position + movement * moveSpeed * Time.fixedDeltaTime);
+            transform.Translate(movement * moveSpeed * Time.fixedDeltaTime);
+
+            anim.SetFloat("Walk", (movement * moveSpeed).magnitude);
+            // Alon 23/05
 
             currentStepDelta += (movement * moveSpeed * Time.fixedDeltaTime).magnitude;
 
